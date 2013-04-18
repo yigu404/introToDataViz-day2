@@ -3,6 +3,11 @@ introduction to data visualization day 2
 
 #Day 2: Tabletop.js & Chart.js
 
+### Fork this repository
+- Change the published website url from http://sethvincent.github.io/introToDataViz-day2 to
+http://YOUR-USERNAME.github.io/introToDataViz-day2
+- edit newgraph.html, and commit the changes.
+
 ### Look at this spreadsheet:
 https://docs.google.com/spreadsheet/pub?key=0AuwSoq4skLXjdGZid2VpSGlWQzdwUnpGQkJPOHBDRHc&output=html
 

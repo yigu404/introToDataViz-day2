@@ -1,0 +1,9 @@
+{
+  "name": "tabletop",
+  "version": "0.0.0",
+  "commit": "015d6f56a51a6d90b6382aba2f1e3f342921f9d8",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/jsoma/tabletop.git"
+  }
+}

@@ -45,6 +45,7 @@
       var values = [];
 
       $.each(data, function(key, value){
+        console.log(data);
         labels.push(data[key]['neighborhood']);
         values.push(parseInt(data[key]['people']))
       });

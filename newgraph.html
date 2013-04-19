@@ -30,7 +30,7 @@
     <script>
     
     // add your spreadsheet url
-    var public_spreadsheet_url = '';
+    var public_spreadsheet_url = 'https://docs.google.com/spreadsheet/pub?key=0AuwSoq4skLXjdHhqb3RHeGpXdVJXMlNRcDU2c3Z3cnc&output=html';
 
     Tabletop.init({ 
       key: public_spreadsheet_url,
@@ -38,7 +38,30 @@
       simpleSheet: true 
     });
 
-    function renderChart(data, tabletop) {
+function renderChart(data) {
+      var labels = [];
+      var values = [];
+
+      $.each(data, function(key, value){
+        labels.push(data[key]['neighborhood']);
+        values.push(parseInt(data[key]['people']))
+        values.push(parseInt(data[key]['people2']))
+        values.push(parseInt(data[key]['people3']))
+      });
+
+      var data = {
+        labels : labels,
+        datasets : [
+          {
+            fillColor : "rgba(220,220,220,0.5)",
+            strokeColor : "rgba(220,220,220,1)",
+            data : values
+          }
+        ]
+      }
+      var ctx = document.getElementById("myChart").getContext("2d");
+      var radarChart = new Chart(ctx).Radar(data);
+    }
       
       // implement renderChart function
 

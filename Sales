@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>introToDataViz</title>
+    <meta name="description" content="data.">
+    <meta name="viewport" content="width=device-width">
+
+    <link rel="stylesheet" href="./style.css" />
+    <script src="./components/html5shiv/dist/html5shiv.js"></script>
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <h1><a href="/">introduction to data visualization</a></h1>
+      </div>
+    </header>
+    <main role="main">
+      <div class="container">
+        <h3>your graph</h3>
+        <canvas id="myChart" width="500" height="400"></canvas>
+      </div>
+    </main>
+
+    <script src="./components/jquery/jquery.min.js"></script>
+    <script src="./components/tabletop/src/tabletop.js"></script>
+    <script src="./components/Chart.js/Chart.min.js"></script>
+
+    <script> 
+    var public_spreadsheet_url = 'https://docs.google.com/spreadsheet/pub?key=0AuwSoq4skLXjdHhqb3RHeGpXdVJXMlNRcDU2c3Z3cnc&output=html';
+
+    Tabletop.init({ 
+      key: public_spreadsheet_url,
+      callback: renderChart,
+      simpleSheet: true 
+    });
+
+    function renderChart(data) {
+      var labels = [];
+      var values = [];
+      var values2 = [];
+      var values3 = [];
+
+      $.each(data, function(key, value){
+        labels.push(data[key]['neighborhood']);
+        values.push(parseInt(data[key]['people']));
+        values2.push(parseInt(data[key]['people2']));
+        values3.push(parseInt(data[key]['people3']))
+      });
+
+      var data = {
+        labels : labels,
+        datasets : [
+          {
+            fillColor : "rgba(220,220,220,0.5)",
+            strokeColor : "rgba(220,220,220,1)",
+            data : values
+          },
+          {
+            fillColor : "rgba(151,187,205,0.5)",
+            strokeColor : "rgba(151,187,205,1)",
+            data : values2
+          },
+          {
+            fillColor : "rgba(255.51.204,0.5)",
+            strokeColor : "rgba(255.51.204,1)",
+            data : values3
+          }
+        ]
+      }
+      var ctx = document.getElementById("myChart").getContext("2d");
+      var radarChart = new Chart(ctx).Radar(data);
+    }
+    </script>
+  </body>
+</html>

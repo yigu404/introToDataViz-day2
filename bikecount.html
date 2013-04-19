@@ -32,17 +32,16 @@
 
     Tabletop.init({ 
       key: public_spreadsheet_url,
-      callback: LineChart,
+      callback: lineChart,
       simpleSheet: true 
     });
 
-    function LineChart(data) {
+    function lineChart(data) {
       var labels = [];
       var northbound = [];
       var southbound = [];
 
       $.each(data, function(key, value){
-        consle.log (data);
         labels.push(data[key]['Date']);
         northbound.push(parseInt(data[key]['Fremont Bridge NB']));
         southbound.push(parseInt(data[key]['Fremont Bridge SB']))
@@ -54,21 +53,33 @@
           {
         		fillColor : "rgba(220,220,220,0.5)",
       			strokeColor : "rgba(220,220,220,1)",
-      			pointColor : "rgba(220,220,220,1)",
-      			pointStrokeColor : "#fff",
             data : northbound
           },
           {
         		fillColor : "rgba(151,187,205,0.5)",
       			strokeColor : "rgba(151,187,205,1)",
-      			pointColor : "rgba(151,187,205,1)",
-      			pointStrokeColor : "#fff",
             data : southbound
           }
         ]
       }
+      
+      options = {
+        
+        //Boolean - Whether to show a stroke for datasets
+        datasetStroke : true,
+        
+        //Number - Pixel width of dataset stroke
+        datasetStrokeWidth : 3,
+        
+        //Boolean - Whether to fill the dataset with a colour
+        datasetFill : true,
+        
+        //Boolean - Whether to animate the chart
+        animation : true,
+        
+      }
       var ctx = document.getElementById("myChart").getContext("2d");
-      var LineChart = new Chart(ctx).Line(data);
+      var lineChart = new Chart(ctx).Line(data);
     }
     </script>
   </body>

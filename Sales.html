@@ -28,25 +28,23 @@
     <script src="./components/Chart.js/Chart.min.js"></script>
 
     <script> 
-    var public_spreadsheet_url = 'https://docs.google.com/spreadsheet/pub?key=0AuwSoq4skLXjdHhqb3RHeGpXdVJXMlNRcDU2c3Z3cnc&output=html';
+    var public_spreadsheet_url = 'https://docs.google.com/spreadsheet/pub?key=0Am2xZIFMQ28KdFZ2cm5ZSUg1Q2xLYUpmeHdBMFNxdXc&output=html';
 
     Tabletop.init({ 
       key: public_spreadsheet_url,
-      callback: renderChart,
+      callback: BarChart,
       simpleSheet: true 
     });
 
-    function renderChart(data) {
+    function BarChart(data) {
       var labels = [];
-      var values = [];
-      var values2 = [];
-      var values3 = [];
+      var northbound = [];
+      var southbound = [];
 
       $.each(data, function(key, value){
-        labels.push(data[key]['neighborhood']);
-        values.push(parseInt(data[key]['people']));
-        values2.push(parseInt(data[key]['people2']));
-        values3.push(parseInt(data[key]['people3']))
+        labels.push(data[key]['Date']);
+        northbound.push(parseInt(data[key]['Fremont Bridge NB']));
+        southbound.push(parseInt(data[key]['Fremont Bridge SB']));
       });
 
       var data = {
@@ -55,22 +53,17 @@
           {
             fillColor : "rgba(220,220,220,0.5)",
             strokeColor : "rgba(220,220,220,1)",
-            data : values
+            data : northbound
           },
           {
             fillColor : "rgba(151,187,205,0.5)",
             strokeColor : "rgba(151,187,205,1)",
-            data : values2
-          },
-          {
-            fillColor : "rgba(255.51.204,0.5)",
-            strokeColor : "rgba(255.51.204,1)",
-            data : values3
+            data : southbound
           }
         ]
       }
       var ctx = document.getElementById("myChart").getContext("2d");
-      var radarChart = new Chart(ctx).Radar(data);
+      var BarChart = new Chart(ctx).Bar(data);
     }
     </script>
   </body>

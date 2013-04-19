@@ -45,11 +45,23 @@ function renderChart(data) {
       $.each(data, function(key, value){
         labels.push(data[key]['neighborhood']);
         values.push(parseInt(data[key]['people']))
+        values.push(parseInt(data[key]['people2']))
+        values.push(parseInt(data[key]['people3']))
       });
 
       var data = {
         labels : labels,
         datasets : [
+          {
+            fillColor : "rgba(220,220,220,0.5)",
+            strokeColor : "rgba(220,220,220,1)",
+            data : values
+          },
+          {
+            fillColor : "rgba(220,220,220,0.5)",
+            strokeColor : "rgba(220,220,220,1)",
+            data : values
+          },
           {
             fillColor : "rgba(220,220,220,0.5)",
             strokeColor : "rgba(220,220,220,1)",

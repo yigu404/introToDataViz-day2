@@ -38,15 +38,14 @@
 
     function lineChart(data) {
       var labels = [];
-      var northbound = [];
-      var southbound = [];
-
-      console.log(data);
+      var v1 = [];
+      var v2 = [];
       
       $.each(data, function(key, value){
+        cong
         labels.push(data[key]['Date']);
-        northbound.push(parseInt(data[key]['Fremont Bridge NB']));
-        southbound.push(parseInt(data[key]['Fremont Bridge SB']))
+        v1.push(parseInt(data[key]['Fremont Bridge NB']));
+        v2.push(parseInt(data[key]['Fremont Bridge SB']))
       });
 
       var data = {
@@ -55,12 +54,12 @@
           {
         		fillColor : "rgba(220,220,220,0.5)",
       			strokeColor : "rgba(220,220,220,1)",
-            data : northbound
+            data : v1
           },
           {
         		fillColor : "rgba(151,187,205,0.5)",
       			strokeColor : "rgba(151,187,205,1)",
-            data : southbound
+            data : v2
           }
         ]
       }

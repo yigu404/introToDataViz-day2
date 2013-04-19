@@ -28,7 +28,7 @@
     <script src="./components/Chart.js/Chart.min.js"></script>
 
     <script> 
-    var public_spreadsheet_url = 'https://docs.google.com/spreadsheet/pub?key=0AuwSoq4skLXjdGZid2VpSGlWQzdwUnpGQkJPOHBDRHc&output=html';
+    var public_spreadsheet_url = 'https://docs.google.com/spreadsheet/pub?key=0AuwSoq4skLXjdHhqb3RHeGpXdVJXMlNRcDU2c3Z3cnc&output=html';
 
     Tabletop.init({ 
       key: public_spreadsheet_url,
@@ -39,15 +39,29 @@
     function renderChart(data) {
       var labels = [];
       var values = [];
+      var values2 = [];
+      var values3 = [];
 
       $.each(data, function(key, value){
         labels.push(data[key]['neighborhood']);
         values.push(parseInt(data[key]['people']))
+        values2.push(parseInt(data[key]['people2']))
+        values3.push(parseInt(data[key]['people3']))
       });
 
       var data = {
         labels : labels,
         datasets : [
+          {
+            fillColor : "rgba(220,220,220,0.5)",
+            strokeColor : "rgba(220,220,220,1)",
+            data : values
+          },
+          {
+            fillColor : "rgba(220,220,220,0.5)",
+            strokeColor : "rgba(220,220,220,1)",
+            data : values
+          },
           {
             fillColor : "rgba(220,220,220,0.5)",
             strokeColor : "rgba(220,220,220,1)",

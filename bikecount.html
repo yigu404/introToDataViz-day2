@@ -42,6 +42,7 @@
       var southbound = [];
 
       $.each(data, function(key, value){
+        consle.log (data);
         labels.push(data[key]['Date']);
         northbound.push(parseInt(data[key]['Fremont Bridge NB']));
         southbound.push(parseInt(data[key]['Fremont Bridge SB']))

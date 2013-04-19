@@ -32,11 +32,11 @@
 
     Tabletop.init({ 
       key: public_spreadsheet_url,
-      callback: BarChart,
+      callback: LineChart,
       simpleSheet: true 
     });
 
-    function BarChart(data) {
+    function LineChart(data) {
       var labels = [];
       var northbound = [];
       var southbound = [];
@@ -63,7 +63,7 @@
         ]
       }
       var ctx = document.getElementById("myChart").getContext("2d");
-      var BarChart = new Chart(ctx).Bar(data);
+      var LineChart = new Chart(ctx).Line(data);
     }
     </script>
   </body>

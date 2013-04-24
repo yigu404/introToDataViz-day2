@@ -32,22 +32,55 @@
     <script src="./components/Chart.js/Chart.min.js"></script>
 
     <script> 
-    var public_spreadsheet_url = 'https://docs.google.com/spreadsheet/pub?key=0AuwSoq4skLXjdGZid2VpSGlWQzdwUnpGQkJPOHBDRHc&output=html';
+    var url = 'http://search.twitter.com/search.json';
+    var query = { q: ":)" };
 
-    Tabletop.init({ 
-      key: public_spreadsheet_url,
-      callback: renderChart,
-      simpleSheet: true 
-    });
-
+    function request(url, data, callback){
+      var request = $.ajax({
+        type: "GET",
+        url: url,
+        dataType: "jsonp",
+        data: data
+      });
+    
+      request.done(function(response){
+        callback(response);
+      });
+    }
+    
     function renderChart(data) {
-      var labels = [];
-      var values = [];
-
+      var LanName = [];
+      var en = [];
+      var fr = [];
+      var ar = [];
+      var ja = [];
+      var es = [];
+      var de = [];
+      var it = [];
+      var id = [];
+      var pt = [];
+      var ko = [];
+      var tr = [];
+      var nl = [];
+      var fil = [];
+      var msa = [];
+      var zh-tw = [];
+      var zh-cn = [];
+      var hi = [];
+      var no = [];
+      var sv = [];
+      var gi = [];
+      var fi = [];
+      var da = [];
+      var he = [];
+      var ur = [];
+      var th = [];
+      
+      console.log(data);
       $.each(data, function(key, value){
-        console.log(data);
-        labels.push(data[key]['neighborhood']);
-        values.push(parseInt(data[key]['people']))
+      console.log(data)[key];
+        //labels.push(data[key]['neighborhood']);
+        //values.push(parseInt(data[key]['people']))
       });
 
       var data = {

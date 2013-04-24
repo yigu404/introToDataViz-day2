@@ -28,25 +28,34 @@
     <script src="./components/Chart.js/Chart.min.js"></script>
 
     <script> 
-    var public_spreadsheet_url = 'https://docs.google.com/spreadsheet/pub?key=0AuwSoq4skLXjdHhqb3RHeGpXdVJXMlNRcDU2c3Z3cnc&output=html';
-
-    Tabletop.init({ 
-      key: public_spreadsheet_url,
-      callback: renderChart,
-      simpleSheet: true 
-    });
-
-    function renderChart(data) {
+    var url = 'http://search.twitter.com/search.json';
+    var query = { q: ":)" };
+    
+    function request(url, data, callback){
+    var request = $.ajax({
+        type: "GET",
+        url: url,
+        dataType: "jsonp",
+        data: data
+      });
+    
+    request.done(function(response){
+    callback(response);
+      });
+    }
+    
+    request(url, query, function(data){
       var labels = [];
-      var values = [];
+      var values1 = [];
       var values2 = [];
       var values3 = [];
+      var values4 = [];
 
+      consle.log(data)
       $.each(data, function(key, value){
-        labels.push(data[key]['neighborhood']);
-        values.push(parseInt(data[key]['people']));
-        values2.push(parseInt(data[key]['people2']));
-        values3.push(parseInt(data[key]['people3']))
+        //labels.push(data[key]['neighborhood']);
+        //values.push(parseInt(data[key]['people']))
+        console.log(data)[key]
       });
 
       var data = {
